@@ -3,13 +3,15 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 01 Jun 2025 pada 07.27
+-- Waktu pembuatan: 01 Jun 2025 pada 11.24
 -- Versi server: 10.4.32-MariaDB
 -- Versi PHP: 8.2.12
 
+SET FOREIGN_KEY_CHECKS=0;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
+
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -27,6 +29,7 @@ SET time_zone = "+00:00";
 -- Struktur dari tabel `activities`
 --
 
+DROP TABLE IF EXISTS `activities`;
 CREATE TABLE `activities` (
   `id` int(11) NOT NULL,
   `type` varchar(20) DEFAULT NULL,
@@ -41,6 +44,7 @@ CREATE TABLE `activities` (
 -- Struktur dari tabel `assignments`
 --
 
+DROP TABLE IF EXISTS `assignments`;
 CREATE TABLE `assignments` (
   `id` int(11) NOT NULL,
   `course_id` int(11) NOT NULL,
@@ -57,6 +61,7 @@ CREATE TABLE `assignments` (
 -- Struktur dari tabel `contact_messages`
 --
 
+DROP TABLE IF EXISTS `contact_messages`;
 CREATE TABLE `contact_messages` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
@@ -81,12 +86,16 @@ INSERT INTO `contact_messages` (`id`, `name`, `email`, `subject`, `message`, `cr
 -- Struktur dari tabel `courses`
 --
 
+DROP TABLE IF EXISTS `courses`;
+
 CREATE TABLE `courses` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   `description` text DEFAULT NULL,
-  `teacher_id` int(11) DEFAULT NULL
+  `teacher_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 
 --
 -- Dumping data untuk tabel `courses`
@@ -106,8 +115,10 @@ INSERT INTO `courses` (`id`, `name`, `description`, `teacher_id`) VALUES
 -- Struktur dari tabel `discussions`
 --
 
+DROP TABLE IF EXISTS `discussions`;
+
 CREATE TABLE `discussions` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `course_id` int(11) DEFAULT NULL,
   `user_id` int(11) NOT NULL,
   `title` varchar(100) NOT NULL,
@@ -115,8 +126,10 @@ CREATE TABLE `discussions` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `file_path` varchar(255) DEFAULT NULL,
   `file_name` varchar(255) DEFAULT NULL,
-  `file_type` varchar(50) DEFAULT NULL
+  `file_type` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 
 --
 -- Dumping data untuk tabel `discussions`
@@ -134,6 +147,7 @@ INSERT INTO `discussions` (`id`, `course_id`, `user_id`, `title`, `content`, `cr
 -- Struktur dari tabel `download_logs`
 --
 
+DROP TABLE IF EXISTS `download_logs`;
 CREATE TABLE `download_logs` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
@@ -148,6 +162,7 @@ CREATE TABLE `download_logs` (
 -- Struktur dari tabel `materials`
 --
 
+DROP TABLE IF EXISTS `materials`;
 CREATE TABLE `materials` (
   `id` int(11) NOT NULL,
   `title` varchar(255) NOT NULL,
@@ -165,7 +180,8 @@ INSERT INTO `materials` (`id`, `title`, `category`, `content`, `file_path`, `cre
 (40, ' Introducing Oneself and Others', 'Bahasa Inggris', 'Materi ini membahas cara memperkenalkan diri dan orang lain dalam bahasa Inggris. Siswa akan mempelajari ungkapan sapaan, perkenalan formal dan informal, serta kosakata dasar seperti nama, asal, pekerjaan, dan hobi. Dilengkapi dengan contoh percakapan sederhana agar siswa mampu berlatih berbicara secara percaya diri dalam situasi sehari-hari.', '68392faf95ad26.90544246.pdf', '2025-05-30 04:10:24'),
 (41, 'Teks Eksposisi: Pengertian, Struktur, dan Contohnya', 'Bahasa Indonesia', 'Materi ini membahas tentang teks eksposisi, yaitu jenis teks yang bertujuan menyampaikan pendapat atau gagasan disertai argumen yang logis. Siswa akan mempelajari pengertian teks eksposisi, struktur teks (tesis, argumentasi, dan penegasan ulang), serta kaidah kebahasaan yang digunakan. Dilengkapi dengan contoh teks eksposisi agar siswa dapat memahami dan menulisnya secara mandiri.', '68392fcfdbc7e1.86708742.pdf', '2025-05-30 04:10:55'),
 (42, 'Bilangan Bulat', 'Matematika', 'Jadi, bilangan bulat adalah konsep dasar yang sangat berguna dalam kehidupan sehari-hari dan pelajaran matematika. Dengan memahami bilangan bulat, kita bisa lebih mudah mengerjakan soal dan menghadapi berbagai masalah yang berkaitan dengan angka.', '683a5d2d010774.63927911.pdf', '2025-05-31 01:36:45'),
-(43, 'Kemuhammadiyahan', 'Pendidikan Agama Islam / PAI', 'Kemuhammadiyahan adalah pemahaman dan pengamalan ajaran serta nilai-nilai organisasi Muhammadiyah. Muhammadiyah sendiri adalah salah satu organisasi Islam terbesar di Indonesia yang fokus pada pendidikan, dakwah, dan sosial kemasyarakatan berdasarkan Al-Qur’an dan Sunnah.', '683a5d5a665c15.24233715.pdf', '2025-05-31 01:37:30');
+(43, 'Kemuhammadiyahan', 'Pendidikan Agama Islam / PAI', 'Kemuhammadiyahan adalah pemahaman dan pengamalan ajaran serta nilai-nilai organisasi Muhammadiyah. Muhammadiyah sendiri adalah salah satu organisasi Islam terbesar di Indonesia yang fokus pada pendidikan, dakwah, dan sosial kemasyarakatan berdasarkan Al-Qur’an dan Sunnah.', '683a5d5a665c15.24233715.pdf', '2025-05-31 01:37:30'),
+(46, 'Coba', 'Coba Materi Baru', 'coba', '683bfd3413ae43.70265764.pdf', '2025-06-01 07:11:48');
 
 -- --------------------------------------------------------
 
@@ -173,6 +189,7 @@ INSERT INTO `materials` (`id`, `title`, `category`, `content`, `file_path`, `cre
 -- Struktur dari tabel `options`
 --
 
+DROP TABLE IF EXISTS `options`;
 CREATE TABLE `options` (
   `id` int(11) NOT NULL,
   `question_id` int(11) DEFAULT NULL,
@@ -186,16 +203,22 @@ CREATE TABLE `options` (
 -- Struktur dari tabel `questions`
 --
 
+DROP TABLE IF EXISTS `questions`;
+
 CREATE TABLE `questions` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `quiz_id` int(11) NOT NULL,
   `question_text` text NOT NULL,
   `option_a` varchar(255) NOT NULL,
   `option_b` varchar(255) NOT NULL,
   `option_c` varchar(255) DEFAULT NULL,
   `option_d` varchar(255) DEFAULT NULL,
-  `correct_answer` enum('A','B','C','D') NOT NULL
+  `correct_answer` enum('A','B','C','D') NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_quiz_id` (`quiz_id`),
+  CONSTRAINT `fk_quiz_id` FOREIGN KEY (`quiz_id`) REFERENCES `quizzes` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 
 --
 -- Dumping data untuk tabel `questions`
@@ -214,6 +237,7 @@ INSERT INTO `questions` (`id`, `quiz_id`, `question_text`, `option_a`, `option_b
 -- Struktur dari tabel `question_options`
 --
 
+DROP TABLE IF EXISTS `question_options`;
 CREATE TABLE `question_options` (
   `id` int(11) NOT NULL,
   `question_id` int(11) NOT NULL,
@@ -227,14 +251,20 @@ CREATE TABLE `question_options` (
 -- Struktur dari tabel `quizzes`
 --
 
+DROP TABLE IF EXISTS `quizzes`;
+
 CREATE TABLE `quizzes` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `course_id` int(11) NOT NULL,
   `title` varchar(100) NOT NULL,
   `duration_minutes` int(11) NOT NULL,
   `start_time` datetime NOT NULL,
-  `end_time` datetime NOT NULL
+  `end_time` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_course_id` (`course_id`),
+  CONSTRAINT `fk_course_id` FOREIGN KEY (`course_id`) REFERENCES `courses` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 
 --
 -- Dumping data untuk tabel `quizzes`
@@ -253,6 +283,7 @@ INSERT INTO `quizzes` (`id`, `course_id`, `title`, `duration_minutes`, `start_ti
 -- Struktur dari tabel `quiz_questions`
 --
 
+DROP TABLE IF EXISTS `quiz_questions`;
 CREATE TABLE `quiz_questions` (
   `id` int(11) NOT NULL,
   `quiz_id` int(11) NOT NULL,
@@ -267,6 +298,7 @@ CREATE TABLE `quiz_questions` (
 -- Struktur dari tabel `quiz_results`
 --
 
+DROP TABLE IF EXISTS `quiz_results`;
 CREATE TABLE `quiz_results` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
@@ -283,6 +315,7 @@ CREATE TABLE `quiz_results` (
 -- Struktur dari tabel `replies`
 --
 
+DROP TABLE IF EXISTS `replies`;
 CREATE TABLE `replies` (
   `id` int(11) NOT NULL,
   `discussion_id` int(11) NOT NULL,
@@ -309,6 +342,7 @@ INSERT INTO `replies` (`id`, `discussion_id`, `user_id`, `content`, `created_at`
 -- Struktur dari tabel `submissions`
 --
 
+DROP TABLE IF EXISTS `submissions`;
 CREATE TABLE `submissions` (
   `id` int(11) NOT NULL,
   `task_id` int(11) DEFAULT NULL,
@@ -333,6 +367,7 @@ INSERT INTO `submissions` (`id`, `task_id`, `student_id`, `file_path`, `submitte
 -- Struktur dari tabel `submission_attachments`
 --
 
+DROP TABLE IF EXISTS `submission_attachments`;
 CREATE TABLE `submission_attachments` (
   `id` int(11) NOT NULL,
   `submission_id` int(11) NOT NULL,
@@ -347,6 +382,7 @@ CREATE TABLE `submission_attachments` (
 -- Struktur dari tabel `submission_files`
 --
 
+DROP TABLE IF EXISTS `submission_files`;
 CREATE TABLE `submission_files` (
   `id` int(11) NOT NULL,
   `submission_id` int(11) NOT NULL,
@@ -379,8 +415,9 @@ INSERT INTO `submission_files` (`id`, `submission_id`, `file_name`, `file_path`,
 -- Struktur dari tabel `tasks`
 --
 
+DROP TABLE IF EXISTS `tasks`;
 CREATE TABLE `tasks` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `course_id` int(11) NOT NULL,
   `teacher_id` int(11) NOT NULL,
   `title` varchar(255) NOT NULL,
@@ -389,8 +426,10 @@ CREATE TABLE `tasks` (
   `max_score` int(11) DEFAULT 100,
   `created_at` datetime DEFAULT current_timestamp(),
   `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `deadline` datetime DEFAULT NULL
+  `deadline` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)  -- ✅ Tambahkan PRIMARY KEY
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 
 --
 -- Dumping data untuk tabel `tasks`
@@ -409,6 +448,7 @@ INSERT INTO `tasks` (`id`, `course_id`, `teacher_id`, `title`, `description`, `d
 -- Struktur dari tabel `task_attachments`
 --
 
+DROP TABLE IF EXISTS `task_attachments`;
 CREATE TABLE `task_attachments` (
   `id` int(11) NOT NULL,
   `task_id` int(11) NOT NULL,
@@ -431,6 +471,7 @@ INSERT INTO `task_attachments` (`id`, `task_id`, `file_name`, `file_path`, `uplo
 -- Struktur dari tabel `task_files`
 --
 
+DROP TABLE IF EXISTS `task_files`;
 CREATE TABLE `task_files` (
   `id` int(11) NOT NULL,
   `task_id` int(11) NOT NULL,
@@ -457,6 +498,7 @@ INSERT INTO `task_files` (`id`, `task_id`, `file_path`, `file_name`, `uploaded_a
 -- Struktur dari tabel `task_submissions`
 --
 
+DROP TABLE IF EXISTS `task_submissions`;
 CREATE TABLE `task_submissions` (
   `id` int(11) NOT NULL,
   `task_id` int(11) NOT NULL,
@@ -483,6 +525,7 @@ INSERT INTO `task_submissions` (`id`, `task_id`, `student_id`, `notes`, `submitt
 -- Struktur dari tabel `uploads`
 --
 
+DROP TABLE IF EXISTS `uploads`;
 CREATE TABLE `uploads` (
   `id` int(11) NOT NULL,
   `file_name` varchar(255) NOT NULL,
@@ -514,6 +557,7 @@ INSERT INTO `uploads` (`id`, `file_name`, `file_path`, `file_type`, `file_size`,
 -- Struktur dari tabel `users`
 --
 
+DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
@@ -570,14 +614,12 @@ ALTER TABLE `contact_messages`
 -- Indeks untuk tabel `courses`
 --
 ALTER TABLE `courses`
-  ADD PRIMARY KEY (`id`),
   ADD KEY `teacher_id` (`teacher_id`);
 
 --
 -- Indeks untuk tabel `discussions`
 --
 ALTER TABLE `discussions`
-  ADD PRIMARY KEY (`id`),
   ADD KEY `course_id` (`course_id`),
   ADD KEY `user_id` (`user_id`);
 
@@ -585,7 +627,6 @@ ALTER TABLE `discussions`
 -- Indeks untuk tabel `download_logs`
 --
 ALTER TABLE `download_logs`
-  ADD PRIMARY KEY (`id`),
   ADD KEY `user_id` (`user_id`),
   ADD KEY `material_id` (`material_id`);
 
@@ -605,35 +646,30 @@ ALTER TABLE `options`
 -- Indeks untuk tabel `questions`
 --
 ALTER TABLE `questions`
-  ADD PRIMARY KEY (`id`),
   ADD KEY `quiz_id` (`quiz_id`);
 
 --
 -- Indeks untuk tabel `question_options`
 --
 ALTER TABLE `question_options`
-  ADD PRIMARY KEY (`id`),
   ADD KEY `question_id` (`question_id`);
 
 --
 -- Indeks untuk tabel `quizzes`
 --
 ALTER TABLE `quizzes`
-  ADD PRIMARY KEY (`id`),
   ADD KEY `course_id` (`course_id`);
 
 --
 -- Indeks untuk tabel `quiz_questions`
 --
 ALTER TABLE `quiz_questions`
-  ADD PRIMARY KEY (`id`),
   ADD KEY `quiz_id` (`quiz_id`);
 
 --
 -- Indeks untuk tabel `quiz_results`
 --
 ALTER TABLE `quiz_results`
-  ADD PRIMARY KEY (`id`),
   ADD KEY `quiz_id` (`quiz_id`),
   ADD KEY `user_id` (`user_id`);
 
@@ -641,7 +677,6 @@ ALTER TABLE `quiz_results`
 -- Indeks untuk tabel `replies`
 --
 ALTER TABLE `replies`
-  ADD PRIMARY KEY (`id`),
   ADD KEY `discussion_id` (`discussion_id`),
   ADD KEY `user_id` (`user_id`);
 
@@ -649,7 +684,6 @@ ALTER TABLE `replies`
 -- Indeks untuk tabel `submissions`
 --
 ALTER TABLE `submissions`
-  ADD PRIMARY KEY (`id`),
   ADD KEY `assignment_id` (`task_id`),
   ADD KEY `student_id` (`student_id`);
 
@@ -657,21 +691,18 @@ ALTER TABLE `submissions`
 -- Indeks untuk tabel `submission_attachments`
 --
 ALTER TABLE `submission_attachments`
-  ADD PRIMARY KEY (`id`),
   ADD KEY `submission_id` (`submission_id`);
 
 --
 -- Indeks untuk tabel `submission_files`
 --
 ALTER TABLE `submission_files`
-  ADD PRIMARY KEY (`id`),
   ADD KEY `submission_id` (`submission_id`);
 
 --
 -- Indeks untuk tabel `tasks`
 --
 ALTER TABLE `tasks`
-  ADD PRIMARY KEY (`id`),
   ADD KEY `course_id` (`course_id`),
   ADD KEY `teacher_id` (`teacher_id`);
 
@@ -679,21 +710,18 @@ ALTER TABLE `tasks`
 -- Indeks untuk tabel `task_attachments`
 --
 ALTER TABLE `task_attachments`
-  ADD PRIMARY KEY (`id`),
   ADD KEY `task_id` (`task_id`);
 
 --
 -- Indeks untuk tabel `task_files`
 --
 ALTER TABLE `task_files`
-  ADD PRIMARY KEY (`id`),
   ADD KEY `task_id` (`task_id`);
 
 --
 -- Indeks untuk tabel `task_submissions`
 --
 ALTER TABLE `task_submissions`
-  ADD PRIMARY KEY (`id`),
   ADD KEY `task_id` (`task_id`),
   ADD KEY `student_id` (`student_id`);
 
@@ -707,7 +735,6 @@ ALTER TABLE `uploads`
 -- Indeks untuk tabel `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `username` (`username`),
   ADD UNIQUE KEY `email` (`email`);
 
@@ -749,13 +776,15 @@ ALTER TABLE `discussions`
 -- AUTO_INCREMENT untuk tabel `download_logs`
 --
 ALTER TABLE `download_logs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,
+  ADD PRIMARY KEY (`id`);
+
 
 --
 -- AUTO_INCREMENT untuk tabel `materials`
 --
 ALTER TABLE `materials`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT untuk tabel `options`
@@ -773,7 +802,9 @@ ALTER TABLE `questions`
 -- AUTO_INCREMENT untuk tabel `question_options`
 --
 ALTER TABLE `question_options`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,
+  ADD PRIMARY KEY (`id`);
+
 
 --
 -- AUTO_INCREMENT untuk tabel `quizzes`
@@ -785,73 +816,102 @@ ALTER TABLE `quizzes`
 -- AUTO_INCREMENT untuk tabel `quiz_questions`
 --
 ALTER TABLE `quiz_questions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,
+  ADD PRIMARY KEY (`id`);
+
 
 --
 -- AUTO_INCREMENT untuk tabel `quiz_results`
 --
 ALTER TABLE `quiz_results`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,
+  ADD PRIMARY KEY (`id`);
+
 
 --
 -- AUTO_INCREMENT untuk tabel `replies`
 --
 ALTER TABLE `replies`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,
+  ADD PRIMARY KEY (`id`),
+  AUTO_INCREMENT=25;
+
 
 --
 -- AUTO_INCREMENT untuk tabel `submissions`
 --
 ALTER TABLE `submissions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,
+  ADD PRIMARY KEY (`id`),
+  AUTO_INCREMENT=13;
+
 
 --
 -- AUTO_INCREMENT untuk tabel `submission_attachments`
 --
 ALTER TABLE `submission_attachments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,
+  ADD PRIMARY KEY (`id`);
+
 
 --
 -- AUTO_INCREMENT untuk tabel `submission_files`
 --
 ALTER TABLE `submission_files`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,
+  ADD PRIMARY KEY (`id`),
+  AUTO_INCREMENT=22;
+
 
 --
 -- AUTO_INCREMENT untuk tabel `tasks`
 --
 ALTER TABLE `tasks`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,
+  AUTO_INCREMENT = 9;
+
+
 
 --
 -- AUTO_INCREMENT untuk tabel `task_attachments`
 --
 ALTER TABLE `task_attachments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,
+  ADD PRIMARY KEY (`id`),
+  AUTO_INCREMENT=45;
+
 
 --
 -- AUTO_INCREMENT untuk tabel `task_files`
 --
 ALTER TABLE `task_files`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,
+  ADD PRIMARY KEY (`id`),
+  AUTO_INCREMENT=18;
+
 
 --
 -- AUTO_INCREMENT untuk tabel `task_submissions`
 --
 ALTER TABLE `task_submissions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,
+  ADD PRIMARY KEY (`id`),
+  AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT untuk tabel `uploads`
 --
 ALTER TABLE `uploads`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,
+  AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,
+  ADD PRIMARY KEY (`id`),
+  AUTO_INCREMENT=15;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
@@ -959,3 +1019,4 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+SET FOREIGN_KEY_CHECKS=1;
