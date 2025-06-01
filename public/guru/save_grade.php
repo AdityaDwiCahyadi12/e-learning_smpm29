@@ -35,3 +35,4 @@ if ($result) {
 
 // Close connection
 $conn->close();
+?>

@@ -52,3 +52,4 @@ try {
 } catch (PDOException $e) {
     die("Error: " . $e->getMessage());
 }
+?>

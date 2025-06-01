@@ -23,3 +23,4 @@ if (isset($_GET['file'])) {
 } else {
     die("Parameter file tidak valid.");
 }
+?>

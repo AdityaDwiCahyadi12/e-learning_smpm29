@@ -32,3 +32,4 @@ if ($result) {
 } else {
     echo json_encode(['success' => false, 'message' => 'Error updating grade and feedback: ' . $conn->error]);
 }
+?>

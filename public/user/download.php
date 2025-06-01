@@ -66,3 +66,4 @@ if (isset($_GET['file'])) {
     http_response_code(400);
     die("Parameter file tidak valid.");
 }
+?>

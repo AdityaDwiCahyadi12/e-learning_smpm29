@@ -74,3 +74,4 @@ try {
 } catch (PDOException $e) {
     die("Gagal menyimpan kuis: " . $e->getMessage());
 }
+?>

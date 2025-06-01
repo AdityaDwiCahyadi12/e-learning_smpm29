@@ -61,7 +61,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         die("Error updating password: " . $e->getMessage());
     }
 }
-
-// Jika request bukan POST, redirect kembali
-header("Location: profil_saya.php");
-exit();
+?>

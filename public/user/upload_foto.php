@@ -84,7 +84,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['foto_profil'])) {
         exit();
     }
 }
-
-// Jika gagal, redirect kembali
-header("Location: profil_saya.php");
-exit();
+?>

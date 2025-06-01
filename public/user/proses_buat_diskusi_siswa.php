@@ -88,3 +88,4 @@ try {
     header("Location: forum_diskusi.php?error=database_error");
     exit;
 }
+?>

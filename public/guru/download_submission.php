@@ -22,3 +22,4 @@ if (file_exists($safePath)) {
 } else {
     die('File tidak ditemukan');
 }
+?>
