@@ -1,8 +1,14 @@
 <?php
-$host = 'localhost'; 
-$dbname = 'smpm29';  
+
+$MYSQL_DATABASE="railway";
+$MYSQL_ROOT_PASSWORD="GOmZVqTVJVvIydPTVczPrsfdRmuLlpvy";
+$MYSQLPORT="3306";
+$MYSQLUSER="root";
+
+$host = 'mysql.railway.internal'; 
+$dbname = 'railway';  
 $username = 'root';
-$password = '';
+$password = 'GOmZVqTVJVvIydPTVczPrsfdRmuLlpvy';
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
