@@ -2,13 +2,14 @@
 session_start();
 
 // Database configuration
-$host = 'localhost';
-$user = 'root';
-$password = '';
-$dbname = 'smpm29';
+$host = getenv('MYSQLHOST') ?: 'localhost';  // fallback kalau env gak ada
+$dbname = getenv('MYSQL_DATABASE') ?: 'smpm29';
+$username = getenv('MYSQLUSER') ?: 'root';
+$password = getenv('MYSQL_ROOT_PASSWORD') ?: '';
+$port = getenv('MYSQLPORT') ?: '3306';
 
 // Create connection
-$mysqli = new mysqli($host, $user, $password, $dbname);
+$mysqli = new mysqli($host, $username, $password, $dbname);
 
 // Check connection
 if ($mysqli->connect_error) {

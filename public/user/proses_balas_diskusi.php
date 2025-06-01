@@ -1,9 +1,10 @@
 <?php
 session_start();
-$host = 'localhost';
-$dbname = 'smpm29';
-$username = 'root';
-$password = '';
+$host = getenv('MYSQLHOST') ?: 'localhost';  // fallback kalau env gak ada
+$dbname = getenv('MYSQL_DATABASE') ?: 'smpm29';
+$username = getenv('MYSQLUSER') ?: 'root';
+$password = getenv('MYSQL_ROOT_PASSWORD') ?: '';
+$port = getenv('MYSQLPORT') ?: '3306';
 $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password, [
     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
 ]);

@@ -1,9 +1,10 @@
 <?php
 // Koneksi database
-$host = 'localhost';
-$user = 'root';
-$password = '';
-$dbname = 'smpm29';
+$host = getenv('MYSQLHOST') ?: 'localhost';  // fallback kalau env gak ada
+$dbname = getenv('MYSQL_DATABASE') ?: 'smpm29';
+$username = getenv('MYSQLUSER') ?: 'root';
+$password = getenv('MYSQL_ROOT_PASSWORD') ?: '';
+$port = getenv('MYSQLPORT') ?: '3306';
 
 $mysqli = new mysqli($host, $user, $password, $dbname);
 if ($mysqli->connect_error) {
