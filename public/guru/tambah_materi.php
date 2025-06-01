@@ -573,6 +573,4 @@ while ($row = $category_query->fetch_assoc()) {
     }
 </script>
 </body> 
-</html> 
-
-<?php $mysqli->close(); ?>
+</html>

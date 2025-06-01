@@ -93,6 +93,3 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     header("Location: tambah_materi.php");
     exit();
 }
-
-$mysqli->close();
-?>

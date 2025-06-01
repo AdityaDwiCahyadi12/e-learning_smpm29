@@ -38,4 +38,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 // If something went wrong, redirect back
 header("Location: profil_saya.php");
 exit();
-?>

@@ -81,4 +81,3 @@ try {
     $pdo->rollBack();
     die("Gagal menyimpan jawaban: " . $e->getMessage());
 }
-?>

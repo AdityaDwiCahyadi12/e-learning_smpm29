@@ -748,7 +748,3 @@ if (!$resultDiskusi) {
 </script>
 </body>
 </html>
-
-<?php
-$mysqli->close();
-?>

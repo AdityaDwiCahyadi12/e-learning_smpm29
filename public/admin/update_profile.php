@@ -34,4 +34,3 @@ try {
 } catch (PDOException $e) {
     die("Koneksi atau query gagal: " . $e->getMessage());
 }
-?>

@@ -170,4 +170,3 @@ $result = $mysqli->query($sql);
     </div>
 </body>
 </html>
-<?php $mysqli->close(); ?>

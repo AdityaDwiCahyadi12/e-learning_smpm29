@@ -257,5 +257,3 @@ $baseUploadPath = __DIR__ . '/uploads/';
 </script>
 </body> 
 </html> 
-
-<?php $mysqli->close(); ?>

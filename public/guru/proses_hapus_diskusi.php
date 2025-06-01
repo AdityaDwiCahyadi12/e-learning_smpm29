@@ -94,4 +94,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     header("Location: forum_diskusi.php");
     exit();
 }
-?>

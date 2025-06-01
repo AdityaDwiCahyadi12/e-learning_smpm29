@@ -39,4 +39,3 @@ try {
     header("Location: buat_tugas.php");
     exit();
 }
-?>

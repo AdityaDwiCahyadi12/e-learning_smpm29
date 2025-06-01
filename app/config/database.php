@@ -20,4 +20,3 @@ error_log("ENV DEBUG - MYSQLPORT: " . getenv('MYSQLPORT'));
 error_log("ENV DEBUG - MYSQL_DATABASE: " . getenv('MYSQL_DATABASE'));
 error_log("ENV DEBUG - MYSQLUSER: " . getenv('MYSQLUSER'));
 error_log("ENV DEBUG - MYSQL_ROOT_PASSWORD: " . getenv('MYSQL_ROOT_PASSWORD'));
-?>

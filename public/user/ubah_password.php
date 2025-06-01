@@ -65,4 +65,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 // Jika request bukan POST, redirect kembali
 header("Location: profil_saya.php");
 exit();
-?>
